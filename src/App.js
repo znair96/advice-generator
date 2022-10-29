@@ -7,7 +7,7 @@ function App() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch({ type: "LOAD_ADVICE", loading: true });
-  }, []);
+  }, [dispatch]);
   const advice = useSelector((store) => {
     return store.advicePayload;
   });
@@ -27,7 +27,10 @@ function App() {
             &ldquo;{advice.advice}&rdquo;
           </p>
           <div className="divider"></div>
-          <div onClick={adviceClickHandler} className="bg-color">
+          <div
+            onClick={!loading ? adviceClickHandler : ""}
+            className={!loading ? "bg-color" : ""}
+          >
             <img src={logo} alt="" width="32px" height="32px" />
           </div>
         </div>

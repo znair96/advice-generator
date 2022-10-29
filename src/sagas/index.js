@@ -9,7 +9,7 @@ async function fetchAdviceAPI() {
 
 function* fetchAdviceWorkerSaga() {
   try {
-    const advice = yield fetchAdviceAPI();
+    const advice = yield call(fetchAdviceAPI);
     yield put(fetchAdvice(advice));
   } catch (error) {
     yield put(fetchAdvice(error));
